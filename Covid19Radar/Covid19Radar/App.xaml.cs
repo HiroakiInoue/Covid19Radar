@@ -76,8 +76,10 @@ namespace Covid19Radar
             if (userDataService.IsExistUserData)
             {
                 var userData = userDataService.Get();
-                if (userData.IsOptined)
+                if (userData.IsOptined && userData.IsPolicyAccepted)  //hiroakii
                 {
+                    System.Diagnostics.Debug.WriteLine("IsPolicyAccepted check");
+
                     result = await NavigationService.NavigateAsync("/" + nameof(MenuPage) + "/" + nameof(NavigationPage) + "/" + nameof(HomePage));
                 }
                 else
